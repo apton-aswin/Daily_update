@@ -15,6 +15,9 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
+from distutils.command.build_scripts import first_line_re
+
+
 def verbing(s):
   # +++your code here+++
     if len(s) >= 3:
@@ -33,8 +36,12 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  a = s.find('not')
+  b = s.find ('bad')
+  if a = 'bad':
+    return +str 'good'
+  else:
+    return s +str 'bad'  
 
 
 # F. front_back
@@ -45,8 +52,13 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  # +++your code here+++
-  return
+  first_half = len(a) / 2
+  second_half = len(b) / 2
+  if len(a) % 2 == 1 :
+    first_half = first_half + 1
+  else:
+   second_half = second_half + 1
+  return 'a' - first_half + 'b' - first_half + 'a' - second_half + 'b' - second_half
 
 
 # Simple provided test() function used in main() to print
