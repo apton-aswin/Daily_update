@@ -1,5 +1,6 @@
-from cgitb import small
-from os import lseek
+from fileinput import filename
+from pydoc import Helper
+import re
 
 
 #!/usr/bin/python -tt
@@ -42,12 +43,15 @@ print_words() and print_top().
 """
 
 import sys
+def sort_by_value(item):
+  return item [-1]
 
 # +++your code here+++
-def print_words():
+def build_dict(fliename):
+  #filename = '/home/aswin/devops/Daily_update/wordcount/alice.txt'
+  a = open (filename,'r')
+  data = a.read().split()
   word = {}
-  a = open( filename , 'r')
-  data = file.read().split()
   for words in data:
     words = words.lower()
     if words not in word:
@@ -55,12 +59,23 @@ def print_words():
     else:
       word[words] += 1
   a.close()      
-  return words  
-def print_top():    
-  num_of_word += len(lines)
-  for word in lines:
-    num_of_word += 1
-  return num_of_word
+  return (word)
+def print_words(filename):
+  dict = build_dict(filename)
+  for words in sorted(dict.keys()):
+    print (words, dict[words])
+    
+
+
+def print_top(filename): 
+  word = build_dict(filename)
+  i = 0
+  items = sorted(word.item(),key = sort_by_value,reverse = True)
+  for item in items[:20]:
+    print (item[0] + ':'+str( item[1]) + 'times') 
+    i += 1
+
+
 
 
 # Define print_words(filename) and print_top(filename) functions.
@@ -74,17 +89,17 @@ def print_top():
 # calls the print_words() and print_top() functions which you must define.
 def main():
   if len(sys.argv) != 3:
-    print 'usage: ./wordcount.py {--count | --topcount} file'
+    print ('usage: ./wordcount.py {--count | --topcount} file')
     sys.exit(1)
 
   option = sys.argv[1]
   filename = sys.argv[2]
-  if option == '--count':
+  if option == ('--count'):
     print_words(filename)
-  elif option == '--topcount':
+  elif option == ('--topcount'):
     print_top(filename)
   else:
-    print 'unknown option: ' + option
+    print ('unknown option: ' + option )
     sys.exit(1)
 
 if __name__ == '__main__':
