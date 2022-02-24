@@ -1,3 +1,7 @@
+from cgitb import small
+from os import lseek
+
+
 #!/usr/bin/python -tt
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -40,6 +44,18 @@ print_words() and print_top().
 import sys
 
 # +++your code here+++
+def print_words():
+  num_of_word = 0
+  with open( 'small.txt' , 'r') as file:
+    data = file.read()
+    lines = data.split()
+def print_top():    
+  num_of_word += len (lines)
+  for word in lines:
+    num_of_word += 1
+  return num_of_word
+
+
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.
