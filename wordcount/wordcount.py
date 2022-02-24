@@ -45,12 +45,19 @@ import sys
 
 # +++your code here+++
 def print_words():
-  num_of_word = 0
-  with open( 'small.txt' , 'r') as file:
-    data = file.read()
-    lines = data.split()
+  word = {}
+  a = open( filename , 'r')
+  data = file.read().split()
+  for words in data:
+    words = words.lower()
+    if words not in word:
+      word[words] = 1
+    else:
+      word[words] += 1
+  a.close()      
+  return words  
 def print_top():    
-  num_of_word += len (lines)
+  num_of_word += len(lines)
   for word in lines:
     num_of_word += 1
   return num_of_word
