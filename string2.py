@@ -15,7 +15,7 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
-from distutils.command.build_scripts import first_line_re
+#from distutils.command.build_scripts import first_line_re
 
 
 def verbing(s):
