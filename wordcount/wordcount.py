@@ -1,5 +1,3 @@
-from fileinput import filename
-from pydoc import Helper
 import re
 
 
